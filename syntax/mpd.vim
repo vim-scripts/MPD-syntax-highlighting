@@ -1,9 +1,9 @@
 " Vim syntax file
 " Language:	    MPD parallel language
-" URL: http://www.vim.org/scripts/script.php?script_id=560
-" Version:	    1.1
-" Last Change:	2003/01/12
+" Version:	    1.3
+" URL:          http://www.vim.org/scripts/script.php?script_id=560
 " Maintainer:	Lukas Zapletal [lzap@root.cz]
+" Last Change:	2003/01/15
 
 if version < 600
 	syntax clear
@@ -14,7 +14,7 @@ endif
 " Keywords
 syntax keyword srType		int real double bool char ptr enum cap file string const optype
 syntax keyword srStatement	if else co oc \/\/ \-\> \[\] in by ni to op
-syntax keyword srStatement	resource procedure process end return reply proc body global begin
+syntax keyword srStatement	resource procedure process end return reply proc body global begin final
 syntax keyword srStatement	var sem rec type returns skip stop cap create destroy union external on
 syntax keyword srBoolean	true false
 syntax keyword srRepeat		while for next exit
@@ -34,23 +34,11 @@ syntax keyword srFunction	get put seek where read scanf sscanf
 syntax keyword srFunction	write writes printf sprintf
 
 " Match
-syntax match srComment		/#.*/
+syntax match srComment		"#.*"
 syntax match srNumber		"-\=\<\d\+\>"
 syntax match srReal		"-\=\<\d\+\.\d\+\>"
-syntax match srSymbolOperator	"[+\-/*=]"
-syntax match srSymbolOperator	"++"
-syntax match srSymbolOperator	"--"
-syntax match srSymbolOperator	"@"
-syntax match srSymbolOperator	"*"
-syntax match srSymbolOperator	"?"
-syntax match srSymbolOperator	"%"
-syntax match srSymbolOperator	"^"
-syntax match srSymbolOperator	"&"
-syntax match srSymbolOperator	"|"
+syntax match srSymbolOperator	"[+\-/*=@?%&\^|<>!]"
 syntax match srSymbolOperator	"[<>]=\="
-syntax match srSymbolOperator	"<<"
-syntax match srSymbolOperator	">>"
-syntax match srSymbolOperator	"!="
 syntax match srSymbolOperator	":="
 syntax match srSymbolOperator	":=:"
 syntax match srSymbolOperator	"[()]"
@@ -61,6 +49,7 @@ syntax match srSymbolOperator	"[\^.]"
 syntax region srComment		start=/\/\*/ skip=/\/\*/ end=/\*\//
 syntax region srString		start=/"/ skip=/\\"/ end=/"/
 syntax region srBlock		start=/in/ end=/ni/ contains=ALL
+syntax region srBlock		start=/co/ end=/oc/ contains=ALL
 syntax region srBlock		start=/resource/ end=/end/ contains=ALL
 syntax region srBlock		start=/global/ end=/end/ contains=ALL
 
