@@ -1,6 +1,7 @@
 " Vim syntax file
-" Language:	    MPD
-" Version:	    1.0
+" Language:	    MPD parallel language
+" URL: http://www.vim.org/scripts/script.php?script_id=560
+" Version:	    1.1
 " Last Change:	2003/01/12
 " Maintainer:	Lukas Zapletal [lzap@root.cz]
 
